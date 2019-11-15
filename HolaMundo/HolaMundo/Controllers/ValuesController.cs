@@ -21,7 +21,7 @@ namespace HolaMundo.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { DataTableToJSON(selectData()) };
+            return new string[] { DataTableToJSON(selectData(0)) };
         }
 
         // GET api/values/5
@@ -29,7 +29,7 @@ namespace HolaMundo.Controllers
 
         public string Get([FromBody] Model model)
         {
-            return model.id.ToString();
+            return  DataTableToJSON(selectData(model.id)) ;
         }
 
         // POST api/values          INSERT
@@ -41,15 +41,18 @@ namespace HolaMundo.Controllers
         }
 
         // PUT api/values/5         UPDATE
-        public void Put(int id, [FromBody]string first, [FromBody]string last)
+        [Route("api/updateuser"), HttpPut]
+        public void Put([FromBody] Model model)
         {
-            updateData(id, first, last);
+            updateData(model.id, model.first, model.last);
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
+        [Route("api/deleteuser"), HttpDelete]
+
+        public void Delete([FromBody] Model model)
         {
-            deleteData(id);
+            deleteData(model.id);
         }
 
         private void insertData(string first, string last)
@@ -115,12 +118,16 @@ namespace HolaMundo.Controllers
             }
         }
 
-        private DataTable selectData()
+        private DataTable selectData(int? i)
         {
             DataTable dTable = new DataTable();
             try
             {
-                string Query = "select * from users;";
+                string Query;
+                if (i == 0)
+                    Query = "select * from users;";
+                else
+                    Query = "select * from users where Id = "+i+";";
                 MySqlConnection MyConn2 = new MySqlConnection(myConnectionString);
                 MySqlCommand MyCommand2 = new MySqlCommand(Query, MyConn2);
                 MyConn2.Open();  
