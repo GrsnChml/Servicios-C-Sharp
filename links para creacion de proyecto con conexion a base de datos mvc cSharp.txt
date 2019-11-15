@@ -1,0 +1,7 @@
+https://support.microsoft.com/en-my/help/2778398/creating-simple-service-with-asp-net-mvc-web-api-to-be-accessed-by-win
+https://medium.com/developer-diary/asp-net-mvc-5-with-entity-framework-and-mysql-code-first-migrations-6e315669b6b7
+https://anexsoft.com/como-configurar-y-publicar-en-el-iis-un-proyecto-asp-net
+https://www.c-sharpcorner.com/UploadFile/9582c9/insert-update-delete-display-data-in-mysql-using-C-Sharp/
+https://stackoverflow.com/a/29407694
+https://stackoverrun.com/es/q/10669326
+https://www.youtube.com/watch?reload=9&v=vmTIEn7M6oQ
